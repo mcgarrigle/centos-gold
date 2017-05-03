@@ -3,7 +3,7 @@
 WORKING="/var/lib/iso"
 PUB='/var/pub'
 
-ISO="${PUB}/centos-gold-7.3.1611.iso"
+
 
 yum install -y genisoimage
 
@@ -12,8 +12,12 @@ mount /dev/sr0 /media/cdrom
 
 mkdir -p ${WORKING}
 cp -a /media/cdrom/* ${WORKING}
-cp ks/gold.ks ${WORKING}
+cp gold.ks ${WORKING}
 cp isolinux.cfg ${WORKING}/isolinux
+
+VERSION=$(./version.pl  ${WORKING}/Packages/centos-release-*)
+ISO="${PUB}/centos-gold-${VERSION}.iso"
+echo "image = ${ISO}"
 
 mkdir -p ${PUB}
 cd ${WORKING}
