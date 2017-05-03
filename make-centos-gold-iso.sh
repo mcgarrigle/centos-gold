@@ -8,7 +8,7 @@ yum install -y genisoimage
 mkdir -p /media/cdrom
 mount /dev/sr0 /media/cdrom
 
-mkdir .iso
+mkdir -p ${WORKING}
 cp -a /media/cdrom/* ${WORKING}
 cp ks/gold.ks ${WORKING}
 cp isolinux.cfg ${WORKING}/isolinux
