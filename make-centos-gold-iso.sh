@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WORKING=".iso"
+WORKING="/var/lib/iso"
 ISO="/tmp/centos-gold-7.3.1611.iso"
 
 yum install -y genisoimage
@@ -15,3 +15,4 @@ cp isolinux.cfg ${WORKING}/isolinux
 
 cd ${WORKING}
 mkisofs -o ${ISO} -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -J -R -V Gold .
+
