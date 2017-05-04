@@ -9,7 +9,7 @@ mkdir -p /media/cdrom
 mount /dev/sr0 /media/cdrom
 
 mkdir -p ${WORKING}
-cp -a /media/cdrom/* ${WORKING}
+cp -au /media/cdrom/* ${WORKING}
 cp gold.ks ${WORKING}
 cp isolinux.cfg ${WORKING}/isolinux
 

@@ -1,0 +1,11 @@
+
+Generate a Centos Gold Image
+
+Features
+
+  * sets hostname node.foo.local
+  * Configures eth0 = INTNET with 10.0.30.200; eth1 = NAT via DCHP
+  * Has a CIS compliant partition table
+  * Sets hostname in /etc/hosts
+  * Disables UseDNS for sshd
+
