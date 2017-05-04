@@ -1,9 +1,7 @@
 #!/bin/bash
 
 WORKING="/var/lib/iso"
-PUB='/var/pub'
-
-
+PUB='/var/tmp'
 
 yum install -y genisoimage
 
@@ -19,7 +17,6 @@ VERSION=$(./version.pl  ${WORKING}/Packages/centos-release-*)
 ISO="${PUB}/centos-gold-${VERSION}.iso"
 echo "image = ${ISO}"
 
-mkdir -p ${PUB}
 cd ${WORKING}
-mkisofs -o ${ISO} -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -J -R -V Gold .
+mkisofs -o ${ISO} -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -J -R -V CentOS-Gold .
 
