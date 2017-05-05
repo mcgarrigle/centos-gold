@@ -10,3 +10,12 @@ Features:
   * Sets hostname in /etc/hosts
   * Disables UseDNS for sshd
 
+Instructions:
+
+  * Spin up a CentOS VM to work on
+  * git clone git:centos-gold.git
+  * Attach Centos 7.3.1611 Minimal ISO to VM (/dev/sr0)
+  * ./make-centos-gold-iso.sh
+  * /var/lib/iso will contain the prepared ISO contents
+  * /var/tmp/centos-gold-{VERSION}.iso is the ISO image
+
