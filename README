@@ -1,9 +1,10 @@
 
 Generate a Centos Gold Image
 
-Features
+Features:
 
-  * sets hostname node.foo.local
+  * Auto boots to build after 2 seconds
+  * Sets hostname node.foo.local
   * Configures eth0 = INTNET with 10.0.30.200; eth1 = NAT via DCHP
   * Has a CIS compliant partition table
   * Sets hostname in /etc/hosts
