@@ -8,11 +8,13 @@ keyboard uk
 skipx
 
 network --hostname=node.foo.local
-network --device=enp0s3 --noipv6 --bootproto=static --ip=10.0.30.200 --netmask=255.255.255.0
-network --device=enp0s8 --noipv6 --bootproto=dhcp
+network --device=enp0s3 --noipv6 --bootproto=dhcp
+network --device=enp0s8 --noipv6 --bootproto=static --ip=10.0.30.200 --netmask=255.255.255.0
+
+authconfig --useshadow --passalgo=sha256 --kickstart
 
 rootpw "letmein"
-authconfig --useshadow --passalgo=sha256 --kickstart
+user --name=rescue --plaintext --password letmein
 
 timezone --utc UTC
 
@@ -43,7 +45,9 @@ wget
 vim
 @Core
 %end
+
 %post --log=/root/kickstart-post.log
   echo "UseDNS no" >> /etc/ssh/sshd_config
   echo "10.0.30.200 node.foo.local node" >> /etc/hosts
+  echo "rescue ALL=(root) ALL" >> /etc/sudoers.d/rescue
 %end

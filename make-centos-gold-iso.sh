@@ -20,3 +20,4 @@ echo "image = ${ISO}"
 cd ${WORKING}
 mkisofs -o ${ISO} -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -J -R -V CentOS-Gold .
 
+chmod a+r ${ISO}
