@@ -6,7 +6,8 @@ PUB='/var/tmp'
 yum install -y genisoimage
 
 mkdir -p /media/cdrom
-mount /dev/sr0 /media/cdrom
+losetup /dev/loop0 ~/CentOS-7-x86_64-Minimal-1611.iso
+mount /dev/loop0 /media/cdrom
 
 mkdir -p ${WORKING}
 cp -au /media/cdrom/* ${WORKING}
@@ -21,3 +22,5 @@ cd ${WORKING}
 mkisofs -o ${ISO} -b isolinux/isolinux.bin -c isolinux/boot.cat --no-emul-boot --boot-load-size 4 --boot-info-table -J -R -V CentOS-Gold .
 
 chmod a+r ${ISO}
+
+echo ${ISO}
