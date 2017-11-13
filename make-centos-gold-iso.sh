@@ -6,12 +6,12 @@ PUB='/var/tmp'
 yum install -y genisoimage
 
 mkdir -p /media/cdrom
-losetup /dev/loop0 ~/CentOS-7-x86_64-Minimal-1611.iso
+losetup /dev/loop0 /tmp/CentOS-7-x86_64-Minimal-1611.iso
 mount /dev/loop0 /media/cdrom
 
 mkdir -p ${WORKING}
 cp -au /media/cdrom/* ${WORKING}
-cp gold.ks ${WORKING}
+cp gold-*.ks ${WORKING}
 cp isolinux.cfg ${WORKING}/isolinux
 
 VERSION=$(./version.pl  ${WORKING}/Packages/centos-release-*)
