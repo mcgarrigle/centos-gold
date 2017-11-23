@@ -1,16 +1,16 @@
 #!/bin/bash
 
-VERSION="7.3.1611"
+VERSION="7.4.1708"
 
 BASE="rsync://rsync.mirrorservice.org/mirror.centos.org/$VERSION"
 
 function sync {
   mkdir -p "$VERSION/$1"
-  rsync -avSHP "$BASE/$1" "$VERSION"
+  echo rsync -avSHP $2 "$BASE/$1" "$VERSION"
 }
 
 sync "os"
-sync "updates"
+sync "updates" --exclude=drpms
 sync "extras"
 sync "sclo"
 
