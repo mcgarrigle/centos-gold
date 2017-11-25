@@ -5,7 +5,8 @@ Features:
 
   * Auto boots to build after 2 seconds
   * Sets hostname node.foo.local
-  * Configures eth0 = INTNET with 10.0.30.200; eth1 = NAT via DCHP
+  * Configures eth0 = INTNET/HOST with 10.0.30.200;
+  * eth1 = NAT/NATNET in 10.0.40.200; gateway 10.0.40.1
   * Has a CIS compliant partition table
   * Sets hostname in /etc/hosts
   * Disables UseDNS for sshd
@@ -14,8 +15,8 @@ Instructions:
 
   * Spin up a CentOS VM to work on
   * git clone git:centos-gold.git
-  * Attach Centos 7.3.1611 Minimal ISO to VM (/dev/sr0)
+  * Copy Centos 7.3.1611 Minimal ISO to /tmp
   * ./make-centos-gold-iso.sh
-  * /var/lib/iso will contain the prepared ISO contents
-  * /var/tmp/centos-gold-{VERSION}.iso is the ISO image
+  * /tmp will contain the prepared ISO contents
+  * /tmp/centos-gold-{VERSION}.iso is the ISO image
 
