@@ -42,9 +42,11 @@ reboot --eject
 
 %packages --ignoremissing
 yum
+yum-utils
 dhclient
 wget
 vim
+git
 @Core
 %end
 
