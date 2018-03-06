@@ -1,0 +1,12 @@
+part /boot --size=256 --ondisk=sda
+part pv.01 --size=1   --ondisk=sda --grow
+
+volgroup linux pv.01
+
+logvol /              --fstype=xfs --name=root          --vgname=linux --size=2048
+logvol /home          --fstype=xfs --name=home          --vgname=linux --size=2560
+logvol /tmp           --fstype=xfs --name=tmp           --vgname=linux --size=256
+logvol /opt           --fstype=xfs --name=opt           --vgname=linux --size=512
+logvol /var           --fstype=xfs --name=var           --vgname=linux --size=512
+logvol /var/log       --fstype=xfs --name=var_log       --vgname=linux --size=256
+logvol /var/log/audit --fstype=xfs --name=var_log_audit --vgname=linux --size=256

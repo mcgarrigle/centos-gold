@@ -1,3 +1,8 @@
+#!/bin/bash
+
+PARTITION=$(cat ${1}.table)
+
+cat <<EOF
 cdrom
 install
 
@@ -23,7 +28,7 @@ clearpart --all
 
 # -----------------------------------------------
 
-autopart
+${PARTITION}
 
 # -----------------------------------------------
 
@@ -47,3 +52,5 @@ git
   echo "10.0.40.200 node.foo.local node" >> /etc/hosts
   echo "rescue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/rescue
 %end
+EOF
+

@@ -1,6 +1,3 @@
-# gold cdrom kicksrart
-# minimum size 100G
-
 cdrom
 install
 
@@ -24,18 +21,11 @@ bootloader --location=mbr --append="nofb quiet splash=quiet"
 zerombr
 clearpart --all
 
-part /boot --size=1024 --ondisk=sda
-part pv.01 --size=1    --ondisk=sda --grow
+# -----------------------------------------------
 
-volgroup linux pv.01
+autopart
 
-logvol /              --fstype=xfs --name=root          --vgname=linux --size=10240
-logvol /home          --fstype=xfs --name=home          --vgname=linux --size=5120
-logvol /tmp           --fstype=xfs --name=tmp           --vgname=linux --size=5120
-logvol /opt           --fstype=xfs --name=opt           --vgname=linux --size=2048
-logvol /var           --fstype=xfs --name=var           --vgname=linux --size=2048 --grow
-logvol /var/log       --fstype=xfs --name=var_log       --vgname=linux --size=10240
-logvol /var/log/audit --fstype=xfs --name=var_log_audit --vgname=linux --size=1024
+# -----------------------------------------------
 
 text
 reboot --eject
@@ -44,6 +34,8 @@ reboot --eject
 yum
 yum-utils
 dhclient
+bash-completion 
+bash-completion-extras
 wget
 vim
 git
@@ -53,5 +45,5 @@ git
 %post --log=/root/kickstart-post.log
   echo "UseDNS no" >> /etc/ssh/sshd_config
   echo "10.0.40.200 node.foo.local node" >> /etc/hosts
-  echo "rescue ALL=(root) ALL" >> /etc/sudoers.d/rescue
+  echo "rescue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/rescue
 %end
