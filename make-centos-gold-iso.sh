@@ -8,9 +8,9 @@ PUB='/var/tmp'
 
 mount -o loop ${1} $MOUNT
 
-./gold-template.sh tiny > gold-standard.ks
-./gold-template.sh tiny > gold-small.ks
-./gold-template.sh tiny > gold-tiny.ks
+./gold-template.sh standard > gold-standard.ks
+./gold-template.sh small    > gold-small.ks
+./gold-template.sh tiny     > gold-tiny.ks
 
 mkdir -p ${WORKING}
 cp -au ${MOUNT}/* ${WORKING}
