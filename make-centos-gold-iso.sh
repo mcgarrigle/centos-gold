@@ -3,24 +3,24 @@
 yum install -y genisoimage
 
 MOUNT="/mnt"
-WORKING="/var/lib/iso"
-PUB='/var/tmp'
+WORKING="/var/tmp/iso"
+PUB="/var/tmp"
 
+umount -d $MOUNT
 mount -o loop ${1} $MOUNT
 
-./gold-template.sh standard > gold-standard.ks
-./gold-template.sh small    > gold-small.ks
-./gold-template.sh tiny     > gold-tiny.ks
-
+rm -rf ${WORKING}
 mkdir -p ${WORKING}
-cp -au ${MOUNT}/* ${WORKING}
-cp gold-*.ks ${WORKING}
+
+cp -a ${MOUNT}/* ${WORKING}
 cp isolinux.cfg ${WORKING}/isolinux
+
+./gold-template.sh standard > "${WORKING}/gold-standard.ks"
+./gold-template.sh small    > "${WORKING}/gold-small.ks"
+./gold-template.sh tiny     > "${WORKING}/gold-tiny.ks"
 
 VERSION=$(./version.pl  ${WORKING}/Packages/centos-release-*)
 ISO="${PUB}/centos-gold-${VERSION}.iso"
-
-echo "image = ${ISO}"
 
 cd ${WORKING}
 
@@ -32,6 +32,6 @@ mkisofs -o ${ISO} \
   --boot-info-table \
   -J -R -V CentOS-Gold .
 
-chmod a+r ${ISO}
+chmod +r ${ISO}
 
-echo ${ISO}
+echo "image = ${ISO}"
