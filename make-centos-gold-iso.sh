@@ -20,7 +20,7 @@ cp isolinux.cfg ${WORKING}/isolinux
 ./gold-template.sh static tiny     > "${WORKING}/gold-tiny.ks"
 ./gold-template.sh dhcp tiny       > "${WORKING}/gold-local.ks"
 
-VERSION=$(./version.pl  ${WORKING}/Packages/centos-release-*)
+VERSION=$(./version.py ${WORKING}/Packages/centos-release-*)
 ISO="${PUB}/centos-gold-${VERSION}.iso"
 
 cd ${WORKING}
