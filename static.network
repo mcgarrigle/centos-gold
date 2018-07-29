@@ -1,0 +1,2 @@
+network --device=enp0s3 --noipv6 --bootproto=static --ip=10.0.30.200 --netmask=255.255.255.0
+network --device=enp0s8 --noipv6 --bootproto=static --ip=10.0.40.200 --netmask=255.255.255.0 --gateway=10.0.40.1 --nameserver=10.0.40.1

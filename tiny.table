@@ -1,1 +1,6 @@
-autopart
+part /boot --size=256 --ondisk=sda
+part pv.01 --size=1   --ondisk=sda --grow
+
+volgroup linux pv.01
+
+logvol / --fstype=xfs --name=root --vgname=linux --size=2048 --grow

@@ -15,9 +15,10 @@ mkdir -p ${WORKING}
 cp -a ${MOUNT}/* ${WORKING}
 cp isolinux.cfg ${WORKING}/isolinux
 
-./gold-template.sh standard > "${WORKING}/gold-standard.ks"
-./gold-template.sh small    > "${WORKING}/gold-small.ks"
-./gold-template.sh tiny     > "${WORKING}/gold-tiny.ks"
+./gold-template.sh static standard > "${WORKING}/gold-standard.ks"
+./gold-template.sh static small    > "${WORKING}/gold-small.ks"
+./gold-template.sh static tiny     > "${WORKING}/gold-tiny.ks"
+./gold-template.sh dhcp tiny       > "${WORKING}/gold-local.ks"
 
 VERSION=$(./version.pl  ${WORKING}/Packages/centos-release-*)
 ISO="${PUB}/centos-gold-${VERSION}.iso"

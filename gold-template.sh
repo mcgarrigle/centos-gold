@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PARTITION=$(cat ${1}.table)
+NETWORK=$(cat ${1}.network)
+PARTITION=$(cat ${2}.table)
 
 cat <<EOF
 cdrom
@@ -11,8 +12,12 @@ keyboard uk
 skipx
 
 network --hostname=node.foo.local
-network --device=enp0s3 --noipv6 --bootproto=static --ip=10.0.30.200 --netmask=255.255.255.0
-network --device=enp0s8 --noipv6 --bootproto=static --ip=10.0.40.200 --netmask=255.255.255.0 --gateway=10.0.40.1 --nameserver=10.0.40.1
+
+# -----------------------------------------------
+
+${NETWORK}
+
+# -----------------------------------------------
 
 authconfig --useshadow --passalgo=sha256 --kickstart
 
