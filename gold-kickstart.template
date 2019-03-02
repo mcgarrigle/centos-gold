@@ -1,9 +1,3 @@
-#!/bin/bash
-
-NETWORK=$(cat ${1}.network)
-PARTITION=$(cat ${2}.table)
-
-cat <<EOF
 cdrom
 install
 
@@ -11,7 +5,7 @@ lang en
 keyboard uk
 skipx
 
-network --hostname=node.foo.local
+network --hostname=node.local
 
 # -----------------------------------------------
 
@@ -57,5 +51,3 @@ git
   echo "10.0.40.200 node.foo.local node" >> /etc/hosts
   echo "rescue ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/rescue
 %end
-EOF
-

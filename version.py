@@ -10,6 +10,5 @@ import re
 rpm = sys.argv[1]
 cmd = "rpm -qp --queryformat %{version}.%{release} " + rpm
 version = subprocess.check_output(cmd.split(' '))
-
-m = re.search('^(.*?)\.el', version)
+m = re.search('^(\d+\.\d+\.\d+)', version)
 print m.group(1)
