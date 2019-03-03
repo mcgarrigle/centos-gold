@@ -5,10 +5,9 @@ lang en
 keyboard uk
 skipx
 
-network --hostname=node.local
-
 # -----------------------------------------------
 
+network --hostname=node.local
 ${NETWORK}
 
 # -----------------------------------------------
